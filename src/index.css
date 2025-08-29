@@ -1,0 +1,4 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{--jade:#1f6b5d;--jadeLight:#2f9e87;--mist:#f6f7f4;--ink:#0f172a;--gold:#bfa76a;}
