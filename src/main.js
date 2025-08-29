@@ -1,8 +1,6 @@
-﻿import "./style.css";
-
-document.querySelector("#app").innerHTML = 
+﻿document.querySelector("#app").innerHTML = `
   <div class="wrap">
     <h1>四清果 · Vite on GitHub Pages</h1>
     <p>部署成功！现在你可以开始开发啦。</p>
   </div>
-;
+`;
