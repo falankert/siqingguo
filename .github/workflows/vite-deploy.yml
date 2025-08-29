@@ -13,6 +13,10 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+env:
+  CI: true
+  DEBUG: vite:*
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,11 +30,24 @@ jobs:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
-        run: npm install   # 👈 改成 npm install
+      - name: Show tool versions
+        run: |
+          node -v
+          npm -v
 
-      - name: Build with Vite
-        run: npm run build
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Show dependency summary
+        run: |
+          npm ls --depth=0 || true
+          cat package.json
+
+      - name: Show Vite version
+        run: npx vite --version
+
+      - name: Build with Vite (debug)
+        run: npm run build -- --debug
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
